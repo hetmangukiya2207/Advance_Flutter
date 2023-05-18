@@ -1,16 +1,9 @@
-# advance_flutter
+# Advance Flutter
 
-A new Flutter project.
+## Counter App Using Provider
 
-## Getting Started
+> Project :- 1
 
-This project is a starting point for a Flutter application.
+> Application Output :- 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![CounterAppUsingProvider](https://github.com/hetmangukiya2207/Advance_Flutter/assets/114165239/272bc116-7dbc-44fd-9432-38f0a7a17f88)
