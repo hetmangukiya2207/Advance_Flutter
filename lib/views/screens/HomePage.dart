@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed('OTTPlatformScreen',arguments: OTTList );
+              Navigator.of(context).pushNamed('OTTPlatformScreen',arguments: OTTList[index] );
             },
             child: Container(
               color: Colors.blue,

@@ -20,44 +20,20 @@ class _OTTPlatformScreenState extends State<OTTPlatformScreen> {
     double w = s.width;
     Map<String, dynamic> data =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    return Scaffold(
-      body: (Provider.of<ConnectionProvider>(context)
-                  .connectionModel
-                  .ConnectStatus ==
-              "Waiting")
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "SORRY",
-                ),
-                const Text(
-                  "We Couldn't Find That Page",
-                ),
-                const Text(
-                  "Back To Home Page",
-                ),
-                Container(
-                  height: h * 0.05,
-                  width: w * 0.05,
-                  child: Image.asset(
-                    ImagePath + i1,
-                    fit: BoxFit.cover,
+    return SafeArea(
+      child: Scaffold(
+        body: InAppWebView(
+                initialUrlRequest: URLRequest(
+                  url: Uri.parse(
+                    data['Url'],
                   ),
                 ),
-              ],
-            )
-          : InAppWebView(
-              initialUrlRequest: URLRequest(
-                url: Uri.parse(
-                  data['Url'],
-                ),
+                onLoadStart: (Controller, uri) {
+                  Provider.of<GlobalProvider>(context).inAppWebViewController;
+                },
+                onLoadStop: (Controller, uri) {},
               ),
-              onLoadStart: (Controller, uri) {
-                Provider.of<GlobalProvider>(context).inAppWebViewController;
-              },
-              onLoadStop: (Controller, uri) {},
-            ),
+      ),
     );
   }
 }

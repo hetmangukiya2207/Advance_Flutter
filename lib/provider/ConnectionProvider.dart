@@ -22,6 +22,7 @@ class ConnectionProvider extends ChangeNotifier {
 
         default :
           connectionModel.ConnectStatus = "Waiting";
+          break;
       }
     });
   }
