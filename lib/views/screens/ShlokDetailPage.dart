@@ -20,6 +20,9 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size s = MediaQuery.of(context).size;
+    double h = s.height;
+    double w = s.width;
     return Scaffold(
       appBar: AppBar(
         title: Text(Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
@@ -52,7 +55,7 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
                 height: 30,
               ),
               const Text(
-                "Translation",
+                "Transaction",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -64,7 +67,7 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextButton(
+                  ElevatedButton(
                     onPressed: () {
                       Provider.of<ShlokJsonDecodeProvider>(context,
                               listen: false)
@@ -72,7 +75,7 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
                     },
                     child: const Text('English'),
                   ),
-                  TextButton(
+                  ElevatedButton(
                     onPressed: () {
                       Provider.of<ShlokJsonDecodeProvider>(context,
                               listen: false)
@@ -80,7 +83,7 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
                     },
                     child: const Text('Hindi'),
                   ),
-                  TextButton(
+                  ElevatedButton(
                     onPressed: () {
                       Provider.of<ShlokJsonDecodeProvider>(context,
                               listen: false)
@@ -90,7 +93,7 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
                   ),
                 ],
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               Text(
@@ -101,6 +104,30 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
                 style: const TextStyle(
                   fontSize: 16,
                 ),
+              ),
+              SizedBox(
+                height: h * 0.02,
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: Size.fromWidth(h * 0.22), // Set the desired height here
+                    ),
+                    onPressed: () {},
+                    child: Text("❤"),
+                  ),
+                  Spacer(),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: Size.fromWidth(h * 0.22), // Set the desired height here
+                    ),
+                    onPressed: () {
+
+                    },
+                    child: Text("SHARE"),
+                  ),
+                ],
               ),
             ],
           ),

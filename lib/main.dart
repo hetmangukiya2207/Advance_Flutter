@@ -2,6 +2,7 @@ import 'package:bhagvat_geeta/controllers/providers/json_decode_provider.dart';
 import 'package:bhagvat_geeta/models/theme_model.dart';
 import 'package:bhagvat_geeta/views/screens/AllVersesPage.dart';
 import 'package:bhagvat_geeta/views/screens/ChapterDetailPage.dart';
+import 'package:bhagvat_geeta/views/screens/LikePage.dart';
 import 'package:bhagvat_geeta/views/screens/ShlokDetailPage.dart';
 import 'package:bhagvat_geeta/views/screens/SplashScreen.dart';
 import 'package:bhagvat_geeta/views/screens/HomePage.dart';
@@ -47,6 +48,7 @@ void main() async {
           'chapter_detail_page': (context) => const ChapterDetailPage(),
           'all_verses_page': (context) => const AllVersesPage(),
           'shlok_detail_page': (context) => const ShlokDetailPage(),
+          'LikePage': (context) => const LikePage(),
         },
       ),
     ),

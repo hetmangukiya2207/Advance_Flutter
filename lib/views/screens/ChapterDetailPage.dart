@@ -26,6 +26,9 @@ class _ChapterDetailPageState extends State<ChapterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size s = MediaQuery.of(context).size;
+    double h = s.height;
+    double w = s.width;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,6 +43,19 @@ class _ChapterDetailPageState extends State<ChapterDetailPage> {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
+        actions: [
+          SizedBox(
+            width: h * 0.02,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                'LikePage',
+              );
+            },
+            child: Text("❤"),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
