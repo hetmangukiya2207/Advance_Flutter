@@ -38,10 +38,12 @@ class OneTimeIntroScreenPage extends StatelessWidget {
     ),
   ];
 
+  OneTimeIntroScreenPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
-      globalBackgroundColor: Color(0xff0587fc),
+      globalBackgroundColor: const Color(0xff0587fc),
       pages: pages,
       onDone: () {
         Navigator.of(context).pushReplacementNamed('/');

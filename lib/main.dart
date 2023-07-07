@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sky_scrapper/providers/ConnectionProvider.dart';
+import 'package:sky_scrapper/providers/WeatherProvider.dart';
 import 'package:sky_scrapper/views/screens/HomePage.dart';
 import 'package:sky_scrapper/views/screens/OneTimeIntroScreenPage.dart';
 import 'package:sky_scrapper/views/screens/SplashScreenPage.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => ConnectionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WeatherProvider(),
         ),
       ],
       builder: (context, _) => MaterialApp(
