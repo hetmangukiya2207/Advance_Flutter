@@ -5,14 +5,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
 
-class Chat_Screen extends StatefulWidget {
-  const Chat_Screen({super.key});
+class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
 
   @override
-  State<Chat_Screen> createState() => _Chat_ScreenState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _Chat_ScreenState extends State<Chat_Screen> {
+class _ChatPageState extends State<ChatPage> {
   TextEditingController message_controller = TextEditingController();
 
   @override
@@ -27,81 +27,86 @@ class _Chat_ScreenState extends State<Chat_Screen> {
       body: Column(
         children: [
           Expanded(
-              flex: 10,
-              child: StreamBuilder(
-                stream: AllStreamMessages,
-                builder: (ctx, snapshot) {
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text("${snapshot.error}"),
-                    );
-                  } else if (snapshot.hasData) {
-                    QuerySnapshot<Map<String, dynamic>>? snapshot_data =
-                        snapshot.data;
-                    List<QueryDocumentSnapshot<Map<String, dynamic>>>? data =
-                        snapshot_data?.docs;
-
-                    return (data!.isEmpty)
-                        ? Center(
-                            child: Text("No Message Yet"),
-                          )
-                        : ListView.builder(
-                            reverse: true,
-                            itemCount: data.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  FirestoreHelper.fireStore_Helper.DeleteChat(
-                                      uid: data[index].id,
-                                      uid1: data[index]['sentby'],
-                                      uid2: data[index]['receivedby']);
-                                },
-                                child: Row(
-                                  mainAxisAlignment: (data[index]['sentby'] ==
-                                          AuthHelper.auth_helper.firebaseAuth
-                                              .currentUser?.uid)
-                                      ? MainAxisAlignment.end
-                                      : MainAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Chip(
-                                            label:
-                                                Text("${data[index]['msg']}")),
-                                        Text(
-                                          "${data[index]['timestamp'].toDate().toString().split(" ")[1].split(":")[0]}"
-                                          ":${data[index]['timestamp'].toDate().toString().split(" ")[1].split(":")[1]}",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                  }
+            flex: 10,
+            child: StreamBuilder(
+              stream: AllStreamMessages,
+              builder: (ctx, snapshot) {
+                if (snapshot.hasError) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: Text("${snapshot.error}"),
                   );
-                },
-              )),
+                } else if (snapshot.hasData) {
+                  QuerySnapshot<Map<String, dynamic>>? snapshot_data =
+                      snapshot.data;
+                  List<QueryDocumentSnapshot<Map<String, dynamic>>>? data =
+                      snapshot_data?.docs;
+
+                  return (data!.isEmpty)
+                      ? Center(
+                          child: Text("No Message Yet"),
+                        )
+                      : ListView.builder(
+                          reverse: true,
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                FirestoreHelper.fireStore_Helper.DeleteChat(
+                                    uid: data[index].id,
+                                    uid1: data[index]['sentby'],
+                                    uid2: data[index]['receivedby']);
+                              },
+                              child: Row(
+                                mainAxisAlignment: (data[index]['sentby'] ==
+                                        AuthHelper.auth_helper.firebaseAuth
+                                            .currentUser?.uid)
+                                    ? MainAxisAlignment.end
+                                    : MainAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Chip(
+                                          label: Text("${data[index]['msg']}")),
+                                      Text(
+                                        "${data[index]['timestamp'].toDate().toString().split(" ")[1].split(":")[0]}"
+                                        ":${data[index]['timestamp'].toDate().toString().split(" ")[1].split(":")[1]}",
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+          ),
           SearchBarAnimation(
             hintText: "send message....",
             buttonWidget: Icon(Icons.send),
             textEditingController: message_controller,
             isOriginalAnimation: true,
             trailingWidget: GestureDetector(
-                onTap: () {
-                  FirestoreHelper.fireStore_Helper.sendMessage(
-                    uid1: data[0],
-                    uid2: data[1],
-                    msg: message_controller.text,
-                  );
+              onTap: () {
+                FirestoreHelper.fireStore_Helper.sendMessage(
+                  uid1: data[0],
+                  uid2: data[1],
+                  msg: message_controller.text,
+                );
 
-                  message_controller.clear();
-                },
-                child: Icon(Icons.send)),
-            secondaryButtonWidget: Icon(Icons.close),
+                message_controller.clear();
+              },
+              child: Icon(
+                Icons.send,
+              ),
+            ),
+            secondaryButtonWidget: Icon(
+              Icons.close,
+            ),
           )
         ],
       ),

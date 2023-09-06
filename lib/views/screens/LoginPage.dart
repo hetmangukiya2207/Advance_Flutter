@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
                     (value) => Get.offAllNamed('/'),
                   );
             },
-            child: Text("Sign in Anonymously"),
+            child: const Text("Sign in Anonymously"),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 Get.offAllNamed('/');
               } else {}
             },
-            child: Text("Google Sign in"),
+            child: const Text("Google Sign in"),
           ),
         ],
       ),

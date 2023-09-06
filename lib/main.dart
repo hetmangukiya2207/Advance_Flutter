@@ -1,3 +1,4 @@
+import 'package:chat_app_using_firebase/views/screens/ChatPage.dart';
 import 'package:chat_app_using_firebase/views/screens/HomePage.dart';
 import 'package:chat_app_using_firebase/views/screens/LoginPage.dart';
 import 'package:chat_app_using_firebase/views/screens/SplashScreen.dart';
@@ -40,6 +41,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/LoginPage",
           page: () => const LoginPage(),
+        ),
+        GetPage(
+          name: "/ChatPage",
+          page: () => const ChatPage(),
         ),
       ],
     );
