@@ -85,11 +85,20 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             IconButton(
-                onPressed: () {
-                  AuthHelper.auth_helper.SignOut();
-                  Get.offAllNamed('/LoginPage');
-                },
-                icon: Icon(Icons.power_settings_new))
+              onPressed: () {
+                AuthHelper.auth_helper.SignOut();
+                Get.offAllNamed('/LoginPage');
+              },
+              icon: Icon(Icons.power_settings_new),
+            ),
+            IconButton(
+              onPressed: () {
+                Get.offAndToNamed('/NotificationScreen');
+              },
+              icon: Icon(
+                Icons.notification_add,
+              ),
+            ),
           ],
         ),
         body: StreamBuilder(

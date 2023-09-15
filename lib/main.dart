@@ -1,6 +1,7 @@
 import 'package:chat_app_using_firebase/views/screens/ChatPage.dart';
 import 'package:chat_app_using_firebase/views/screens/HomePage.dart';
 import 'package:chat_app_using_firebase/views/screens/LoginPage.dart';
+import 'package:chat_app_using_firebase/views/screens/NotificationScreen.dart';
 import 'package:chat_app_using_firebase/views/screens/SplashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/",
           page: () => const HomePage(),
+        ),
+        GetPage(
+          name: "/NotificationScreen",
+          page: () => const NotificationScreen(),
         ),
         GetPage(
           name: "/LoginPage",
