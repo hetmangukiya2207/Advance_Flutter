@@ -4,6 +4,17 @@
 //    *  *  * *
 //  *            *
 // *              *
+//
+//
+//
+//
+// * * * * * 
+// *            *
+// *            *
+// * * * * * *
+// *            *
+// *            *
+// * * * * *
 
 #include <stdio.h>
 
@@ -29,5 +40,28 @@ int main() {
         printf("\n");
     }
 
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+
+    int rows = 7;
+    int cols = 5; 
+
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= cols; j++) {
+            if (i == 1 || i == rows || i == rows / 2 + 1) {
+                printf("* ");
+            } else {
+                if (j == 1 || j == cols) {
+                    printf("* ");
+                } else {
+                    printf("  ");
+                }
+            }
+        }
+        printf("\n");
+    }
+    
     return 0;
 }
